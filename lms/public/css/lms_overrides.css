@@ -1,0 +1,2203 @@
+/* 1. IMPORT THE FONT */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Brand Colors */
+  --primary-100: #D8E5D9;
+  --primary-200: #BCCBB3;
+  --primary-300: #98B98C;
+  --primary-400: #619666;
+  --primary-500: #3A7C40;
+  --primary-600: #296E2F;
+  --primary-700: #195A1F;
+  --primary-800: #0E3E12;
+  --primary-900: #062609;
+
+  /* Grays */
+  --gray-100: #ffffff;
+  --gray-200: #EEF0EE;
+  --gray-300: #DEDEDD;
+  --gray-400: #C9CCC9;
+  --gray-500: #BBBBBB;
+  --gray-600: #969996;
+  --gray-700: #7D807D;
+  --gray-800: #646864;
+  --gray-900: #323332;
+  --gray-1000: #191A19;
+   /* App Background - slightly off-white to make cards pop */
+   --app-bg: #f4f7f4; 
+  /* Other */
+  --border-color: var(--gray-300);
+  --bg-color: var(--gray-100);
+  --text-color: var(--gray-1000);
+  
+  /* FORCE FONT OVERRIDES */
+  --font-stack: 'IBM Plex Sans Arabic', sans-serif !important;
+  --font-family-sans-serif: 'IBM Plex Sans Arabic', sans-serif !important;
+  --font-sans: 'IBM Plex Sans Arabic', sans-serif !important;
+}
+
+/* === General === */
+body, html, .font-sans {
+  font-family: 'IBM Plex Sans Arabic', sans-serif !important;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+/* === Buttons === */
+button {
+  border-radius: 8px;
+  font-weight: 600;
+  font-family: 'IBM Plex Sans Arabic', sans-serif !important;
+}
+
+.bg-surface-gray-7 {
+  background-color: var(--primary-500) !important;
+}
+
+/* === LMS Sidebar Buttons] === */
+.bg-surface-menu-bar {
+  background-color:var(--app-bg) !important;
+}
+
+
+button.flex.h-7.cursor-pointer.items-center.rounded {
+  background-color: transparent;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  font-family: 'IBM Plex Sans Arabic', sans-serif !important;
+  transition: background 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+/* Hover state */
+button.flex.h-7.cursor-pointer.items-center.rounded:hover {
+  background-color: var(--primary-100);
+  color: var(--primary-800);
+}
+button.flex.h-7.cursor-pointer.items-center.rounded:hover svg {
+  stroke: var(--primary-800) !important;
+}
+/* Active/selected state */
+button.flex.h-7.cursor-pointer.items-center.rounded.bg-surface-selected {
+  background-color: var(--primary-100);
+  color: var(--primary-800);
+}
+button.bg-surface-selected svg {
+  stroke: var(--primary-800) !important;
+}
+
+
+
+button.bg-surface-selected {
+  background-color: var(--primary-100) !important;
+  color: var(--primary-800) !important;
+  font-weight: 600;
+}
+
+button.bg-surface-selected svg {
+  stroke: white;
+}
+
+.stat {
+  display: inline-flex;
+  align-items: center;     /* vertical center */
+  gap: 4px;                /* spacing without LTR/RTL headaches */
+  line-height: 1;          /* kill extra text baseline space */
+}
+.stat svg { 
+  display: block;          /* avoid baseline wobble */
+  flex: 0 0 auto;          /* don't shrink */
+}
+.rtl .stat { direction: ltr; }
+.course-card .meta { 
+  display: flex; 
+  align-items: center; 
+  gap: 12px; 
+  flex-wrap: nowrap;
+}
+.rtl .course-card .meta { direction: rtl; } /* the row keeps RTL order across chips */
+
+/* ---------- RTL: make each icon+number chip stable ---------- */
+/* Targets spans like: class="flex items-center text-ink-gray-7" in your cards */
+.rtl .text-ink-gray-7.flex.items-center {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;     /* spacing that doesn't flip in RTL */
+  line-height: 1 !important;
+  direction: ltr !important; /* keep icon left, number right just like LTR */
+}
+.rtl .text-ink-gray-7.flex.items-center svg {
+  display: block !important;   /* avoid baseline wobble */
+  flex: 0 0 auto !important;
+}
+
+/* ---------- RTL: keep the whole meta row on one line ---------- */
+.rtl .frappe-card .flex.items-center {
+  flex-wrap: nowrap !important;     /* stop wrapping that misaligns chips */
+  margin-right: 0 !important;       /* remove nudge */
+  gap: 0.5rem !important;           /* controlled spacing */
+}
+.rtl .pr-5 {
+  padding-right: 1.50rem;
+}
+.rtl .frappe-card .flex.items-center {
+  gap: 0.5rem; 
+  flex-wrap: nowrap !important;   /* prevent line breaks in the counters row */
+  margin-right: 0 !important;     /* remove the 1px shove that misaligns */
+}
+
+
+/* rtl for the arabic translation */
+.rtl html {
+  direction: rtl !important;
+}
+
+.rtl .bg-surface-gray-2 {
+  background-color: var(--surface-gray-2, #F3F3F3);
+  margin-left: 5px;
+}
+.rtl .text-ink-gray-9 {
+  color: var(--ink-gray-9, #171717);
+  margin-left: 5px;
+}
+
+.rtl body {
+  text-align: right;
+}
+
+/* FORCE FONT ON RTL ELEMENTS */
+.rtl body,
+.rtl * {
+  font-family: 'IBM Plex Sans Arabic', sans-serif !important;
+}
+
+.rtl .sidebar,
+.rtl .flex-row {
+  flex-direction: row-reverse !important;
+}
+
+.rtl .frappe-card button,
+.rtl .frappe-card .btn,
+.rtl .frappe-card input,
+.rtl .frappe-card .frappe-checkbox {
+  margin-left: 0.5rem !important;
+  margin-right: 2px !important; 
+}
+
+.rtl .frappe-card .btn-primary {
+  margin-right: 0.75rem !important;
+  gap: 0.3rem;
+}
+
+.rtl .frappe-card .frappe-checkbox {
+  display: flex;
+  align-items: center;
+  margin-right: 2px;
+  gap: 0.4rem;
+}
+
+.rtl .frappe-card .flex.items-center {
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-right: 1px;
+}
+
+.rtl .space-x-2 {
+  --tw-space-x-reverse: 1; /* reverse direction */
+  margin-left: 0.5rem;
+  margin-right: 0;
+}
+
+.rtl .pr-2 {
+  padding-right: 0.50rem ;
+}
+
+/* RTL Statistics Cards Spacing */
+.rtl .flex.items-center.space-x-2 {
+  gap: 0.5rem !important;
+}
+
+.rtl .flex.items-center.space-x-2 span {
+  margin-left: 0.5rem;
+}
+
+.rtl .flex.items-center.space-x-2 span:first-child {
+  margin-left: 0;
+}
+
+/* Additional spacing for statistics cards in batch dashboard */
+.rtl .grid.grid-cols-4 .flex.items-center.space-x-2 {
+  gap: 0.5rem !important;
+}
+
+.rtl .grid.grid-cols-4 .flex.items-center.space-x-2 span {
+  margin-left: 0.75rem;
+}
+
+/* ============================================
+   COMPREHENSIVE RTL FIXES
+   ============================================ */
+
+/* --- General RTL Layout Fixes --- */
+.rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Use CSS Logical Properties for better RTL support */
+.rtl .ml-1, .rtl .ml-2, .rtl .ml-3, .rtl .ml-4, .rtl .ml-5, .rtl .ml-6 {
+  margin-left: 0 !important;
+  margin-inline-start: var(--spacing) !important;
+}
+
+.rtl .mr-1, .rtl .mr-2, .rtl .mr-3, .rtl .mr-4, .rtl .mr-5, .rtl .mr-6 {
+  margin-right: 0 !important;
+  margin-inline-end: var(--spacing) !important;
+}
+
+.rtl .pl-1, .rtl .pl-2, .rtl .pl-3, .rtl .pl-4, .rtl .pl-5, .rtl .pl-6 {
+  padding-left: 0 !important;
+  padding-inline-start: var(--spacing) !important;
+}
+
+.rtl .pr-1, .rtl .pr-2, .rtl .pr-3, .rtl .pr-4, .rtl .pr-5, .rtl .pr-6 {
+  padding-right: 0 !important;
+  padding-inline-end: var(--spacing) !important;
+}
+
+/* --- Table and List RTL Fixes --- */
+.rtl table {
+  direction: rtl;
+  text-align: right;
+}
+
+.rtl table th,
+.rtl table td {
+  text-align: right;
+}
+
+.rtl table th:first-child,
+.rtl table td:first-child {
+  text-align: right;
+}
+
+.rtl table th:last-child,
+.rtl table td:last-child {
+  text-align: left;
+}
+
+/* --- Quiz Question ID Alignment (from screenshot) --- */
+.rtl .quiz-question-row,
+.rtl [class*="question"] .flex,
+.rtl .questions-list .flex {
+  flex-direction: row-reverse;
+}
+
+.rtl .question-id,
+.rtl [class*="question-id"],
+.rtl .quiz-question-id {
+  text-align: left !important;
+  direction: ltr !important;
+}
+
+/* --- Member/User Lists RTL --- */
+.rtl .member-row,
+.rtl .user-row,
+.rtl .submission-row,
+.rtl [class*="member"] .flex.items-center,
+.rtl [class*="submission"] .flex {
+  flex-direction: row-reverse;
+}
+
+.rtl .member-name,
+.rtl .user-name,
+.rtl .student-name {
+  text-align: right;
+  margin-right: 0;
+  margin-left: auto;
+}
+
+/* --- Status Badges RTL --- */
+.rtl .status-badge,
+.rtl .badge,
+.rtl [class*="badge"],
+.rtl [class*="status"] {
+  margin-left: 0 !important;
+  margin-right: 0.5rem !important;
+}
+
+/* --- Date/Time Display RTL (keep LTR for readability) --- */
+.rtl .date-display,
+.rtl .time-display,
+.rtl [class*="date"],
+.rtl [class*="time"]:not(.items-center),
+.rtl .timestamp {
+  direction: ltr !important;
+  text-align: left !important;
+}
+
+/* --- Course Card RTL Fixes --- */
+.rtl .course-card,
+.rtl .frappe-card {
+  text-align: right;
+}
+
+.rtl .course-card .card-header,
+.rtl .frappe-card .card-header {
+  flex-direction: row-reverse;
+}
+
+.rtl .course-card .card-body,
+.rtl .frappe-card .card-body {
+  text-align: right;
+}
+
+/* --- Statistics/Meta Info RTL --- */
+.rtl .course-stats,
+.rtl .meta-info,
+.rtl .statistics-row {
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+}
+
+.rtl .stat-item {
+  flex-direction: row-reverse;
+  gap: 0.25rem;
+}
+
+/* Keep numbers and icons in natural order */
+.rtl .stat-item span,
+.rtl .stat-item svg {
+  direction: ltr;
+}
+
+/* --- Sidebar RTL Fixes --- */
+.rtl .lms-sidebar,
+.rtl [class*="sidebar"] {
+  text-align: right;
+}
+
+.rtl .sidebar-item,
+.rtl .nav-item {
+  flex-direction: row-reverse;
+}
+
+.rtl .sidebar-item svg,
+.rtl .nav-item svg {
+  margin-left: 0.5rem;
+  margin-right: 0;
+}
+
+/* --- Form Elements RTL --- */
+.rtl input[type="text"],
+.rtl input[type="email"],
+.rtl input[type="password"],
+.rtl input[type="number"],
+.rtl textarea,
+.rtl select {
+  text-align: right;
+  direction: rtl;
+}
+
+.rtl input[type="number"] {
+  direction: ltr;
+  text-align: left;
+}
+
+.rtl .form-group label {
+  text-align: right;
+  display: block;
+}
+
+.rtl .checkbox-wrapper,
+.rtl .radio-wrapper {
+  flex-direction: row-reverse;
+}
+
+.rtl .checkbox-wrapper input,
+.rtl .radio-wrapper input {
+  margin-left: 0.5rem;
+  margin-right: 0;
+}
+
+/* --- Button Groups RTL --- */
+.rtl .btn-group,
+.rtl .button-group,
+.rtl .action-buttons {
+  flex-direction: row-reverse;
+}
+
+.rtl .btn-group .btn:first-child,
+.rtl .button-group button:first-child {
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+
+.rtl .btn-group .btn:last-child,
+.rtl .button-group button:last-child {
+  border-radius: 0.5rem 0 0 0.5rem;
+}
+
+/* --- Breadcrumb RTL --- */
+.rtl .breadcrumb,
+.rtl [class*="breadcrumb"] {
+  flex-direction: row-reverse;
+}
+
+.rtl .breadcrumb-separator {
+  transform: scaleX(-1);
+}
+
+/* --- Icons RTL (flip directional icons) --- */
+.rtl .icon-arrow-left,
+.rtl .icon-arrow-right,
+.rtl .icon-chevron-left,
+.rtl .icon-chevron-right,
+.rtl [class*="arrow-left"],
+.rtl [class*="arrow-right"],
+.rtl [class*="chevron-left"],
+.rtl [class*="chevron-right"] {
+  transform: scaleX(-1);
+}
+
+/* --- Modal/Dialog RTL --- */
+.rtl .modal-header,
+.rtl .dialog-header {
+  flex-direction: row-reverse;
+}
+
+.rtl .modal-close,
+.rtl .dialog-close {
+  left: 1rem;
+  right: auto;
+}
+
+.rtl .modal-body,
+.rtl .dialog-body {
+  text-align: right;
+}
+
+/* --- Float Fixes for RTL --- */
+.rtl .float-right {
+  float: left !important;
+}
+
+.rtl .float-left {
+  float: right !important;
+}
+
+/* --- Course Outline/Chapter RTL --- */
+.rtl .chapter-item,
+.rtl .lesson-item,
+.rtl .outline-item {
+  text-align: right;
+  padding-right: 1rem;
+  padding-left: 0;
+}
+
+.rtl .chapter-item .expand-icon,
+.rtl .lesson-item .lesson-icon {
+  margin-left: 0.5rem;
+  margin-right: 0;
+}
+
+/* --- Reviews Section RTL --- */
+.rtl .reviews-section,
+.rtl .student-reviews {
+  text-align: right;
+}
+
+.rtl .review-header {
+  flex-direction: row-reverse;
+}
+
+.rtl .review-item {
+  text-align: right;
+  border-right: 3px solid var(--primary-500);
+  border-left: none;
+  padding-right: 1rem;
+  padding-left: 0;
+}
+
+.rtl .review-author {
+  flex-direction: row-reverse;
+}
+
+.rtl .write-review-btn {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+/* --- Profile Section RTL --- */
+.rtl .profile-info {
+  padding-right: 200px;
+  padding-left: 1rem;
+}
+
+.rtl .profile-avatar {
+  right: 40px;
+  left: auto;
+}
+
+/* --- Search RTL --- */
+.rtl .search-box,
+.rtl .search-input-wrapper {
+  flex-direction: row-reverse;
+}
+
+.rtl .search-icon {
+  left: auto;
+  right: 0.75rem;
+}
+
+.rtl .search-input {
+  padding-right: 2.5rem;
+  padding-left: 1rem;
+}
+
+/* --- Pagination RTL --- */
+.rtl .pagination {
+  flex-direction: row-reverse;
+}
+
+.rtl .pagination .prev-btn svg,
+.rtl .pagination .next-btn svg {
+  transform: scaleX(-1);
+}
+
+/* --- Grid Layout RTL --- */
+.rtl .grid {
+  direction: rtl;
+}
+
+/* --- Text utilities RTL --- */
+.rtl .text-left {
+  text-align: right !important;
+}
+
+.rtl .text-right {
+  text-align: left !important;
+}
+
+/* --- Gap and Spacing with logical properties --- */
+.rtl .gap-x-1, .rtl .gap-x-2, .rtl .gap-x-3, .rtl .gap-x-4 {
+  column-gap: inherit;
+}
+
+/* --- Fix absolute positioned elements --- */
+.rtl .absolute.left-0 {
+  left: auto !important;
+  right: 0 !important;
+}
+
+.rtl .absolute.right-0 {
+  right: auto !important;
+  left: 0 !important;
+}
+
+/* --- Assignment/Quiz Submission RTL --- */
+.rtl .submission-details,
+.rtl .assignment-details {
+  text-align: right;
+}
+
+.rtl .submission-status {
+  flex-direction: row-reverse;
+}
+
+/* --- Progress Bar RTL --- */
+.rtl .progress-bar {
+  direction: ltr;
+}
+
+.rtl .progress-bar .progress-fill {
+  transform-origin: right;
+}
+
+/* --- Dropdown RTL --- */
+.rtl .dropdown-menu {
+  text-align: right;
+  left: auto;
+  right: 0;
+}
+
+.rtl .dropdown-item {
+  text-align: right;
+}
+
+.rtl .dropdown-item svg {
+  margin-left: 0.5rem;
+  margin-right: 0;
+}
+
+/* --- Tooltip RTL --- */
+.rtl .tooltip {
+  text-align: right;
+}
+
+/* --- Course List Menu RTL --- */
+.rtl .course-list-menu {
+  float: left;
+}
+
+/* --- Certificate RTL --- */
+.rtl .certificate-info {
+  text-align: right;
+}
+
+.rtl .certificate-expiry {
+  margin-right: 2rem;
+  margin-left: 0;
+}
+
+/* --- Empty State RTL --- */
+.rtl .empty-state {
+  text-align: right;
+}
+
+.rtl .empty-state-text {
+  margin-right: 1rem;
+  margin-left: 0;
+}
+
+/* --- Instructor Info RTL --- */
+.rtl .course-instructor {
+  margin-right: 0.5rem;
+  margin-left: 0;
+}
+
+/* --- Tags RTL --- */
+.rtl .course-tags,
+.rtl .tag-list {
+  right: 1rem;
+  left: auto;
+}
+
+/* --- Creator Badge RTL --- */
+.rtl .creator-badge {
+  margin-right: 0.5rem;
+  margin-left: 0;
+}
+
+/* --- Onboarding RTL --- */
+.rtl .onboarding-skip {
+  float: left;
+}
+
+/* --- Card Overlay RTL --- */
+.rtl .course-overlay-card {
+  left: 7%;
+  right: auto;
+}
+
+/* --- Preview Info RTL --- */
+.rtl .preview-info {
+  left: -30px;
+  right: auto;
+}
+
+/* --- Card Buttons RTL --- */
+.rtl .card-buttons {
+  right: 80%;
+  left: auto;
+}
+
+/* ============================================
+   ADDITIONAL RTL FIXES - DROPDOWNS & SELECTS
+   ============================================ */
+
+/* --- Frappe/Custom Select/Dropdown RTL --- */
+.rtl select,
+.rtl .frappe-control[data-fieldtype="Select"] select,
+.rtl .frappe-control[data-fieldtype="Link"] input,
+.rtl .form-control {
+  text-align: right !important;
+  padding-right: 0.75rem !important;
+  padding-left: 2.5rem !important;
+  background-position: left 0.75rem center !important;
+}
+
+/* Fix dropdown arrow position for RTL */
+.rtl select {
+  background-position: left 0.5rem center !important;
+}
+
+/* --- Filter Dropdowns (جميع الفئات, جميع اللغات) --- */
+.rtl .filters select,
+.rtl .filter-dropdown,
+.rtl [class*="filter"] select,
+.rtl .course-filters select {
+  text-align: right !important;
+  padding-right: 1rem !important;
+  padding-left: 2rem !important;
+  direction: rtl !important;
+}
+
+/* --- Frappe UI Select Component RTL --- */
+.rtl .frappe-control.frappe-control-select .select-wrapper,
+.rtl .select-wrapper {
+  direction: rtl;
+}
+
+.rtl .frappe-control.frappe-control-select select,
+.rtl .select-wrapper select {
+  text-align: right;
+  padding-right: 1rem;
+  padding-left: 2.5rem;
+}
+
+/* Fix select icon/arrow positioning */
+.rtl .select-wrapper::after,
+.rtl .frappe-control-select::after {
+  left: 0.75rem !important;
+  right: auto !important;
+}
+
+/* --- Autocomplete/Awesomplete RTL --- */
+.rtl .awesomplete,
+.rtl .frappe-control[data-fieldtype="Autocomplete"] {
+  direction: rtl;
+}
+
+.rtl .awesomplete input,
+.rtl .frappe-control[data-fieldtype="Autocomplete"] input {
+  text-align: right;
+  padding-right: 1rem;
+  padding-left: 2rem;
+}
+
+.rtl .awesomplete > ul,
+.rtl .awesomplete-list {
+  text-align: right;
+}
+
+/* ============================================
+   CHECKBOX & RADIO FIX FOR RTL
+   ============================================ */
+
+/* --- Checkbox with Label RTL --- */
+.rtl .checkbox,
+.rtl .frappe-checkbox,
+.rtl label.checkbox,
+.rtl .form-check,
+.rtl [class*="checkbox"] {
+  display: flex !important;
+  flex-direction: row-reverse !important;
+  justify-content: flex-end !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+}
+
+.rtl .checkbox input[type="checkbox"],
+.rtl .frappe-checkbox input[type="checkbox"],
+.rtl .form-check-input,
+.rtl input[type="checkbox"] {
+  margin-left: 0.5rem !important;
+  margin-right: 0 !important;
+}
+
+.rtl .checkbox label,
+.rtl .frappe-checkbox label,
+.rtl .form-check-label {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* Table row checkboxes - keep checkbox on right side */
+.rtl table td input[type="checkbox"],
+.rtl .list-row input[type="checkbox"],
+.rtl tr input[type="checkbox"] {
+  margin-left: 0.5rem !important;
+  margin-right: 0 !important;
+}
+
+/* ============================================
+   COURSE STATS / ICON+NUMBER FIX
+   ============================================ */
+
+/* --- Stats with icon and number (7 دروس, 4 الطلاب) --- */
+.rtl .course-meta,
+.rtl .course-info-stats,
+.rtl .stats-container {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Each stat item - icon then number then text */
+.rtl .course-meta .stat,
+.rtl .course-meta > div,
+.rtl .course-meta > span,
+.rtl .stat-with-icon {
+  display: inline-flex !important;
+  flex-direction: row-reverse !important;
+  align-items: center !important;
+  gap: 0.35rem !important;
+}
+
+/* Keep icon-number pairs together in LTR order */
+.rtl .icon-text-pair,
+.rtl .stat-icon-number {
+  direction: ltr !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.25rem !important;
+}
+
+/* Specific fix for lesson/student count display */
+.rtl .lesson-count,
+.rtl .student-count,
+.rtl .enrollment-count {
+  display: inline-flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.rtl .lesson-count svg,
+.rtl .student-count svg,
+.rtl .enrollment-count svg {
+  order: 1;
+}
+
+.rtl .lesson-count span,
+.rtl .student-count span,
+.rtl .enrollment-count span {
+  order: 0;
+}
+
+/* ============================================
+   INPUT FIELDS LTR FIX (Numbers, IDs, Codes)
+   ============================================ */
+
+/* Fields that should remain LTR */
+.rtl input[type="email"],
+.rtl input[type="url"],
+.rtl input[type="tel"],
+.rtl input[name*="code"],
+.rtl input[name*="id"],
+.rtl input[name*="email"],
+.rtl .ltr-input {
+  direction: ltr !important;
+  text-align: left !important;
+}
+
+/* Question IDs should be LTR */
+.rtl .question-id-cell,
+.rtl td:has(> [class*="QTS"]),
+.rtl [class*="QTS"],
+.rtl .quiz-id {
+  direction: ltr !important;
+  text-align: left !important;
+}
+
+/* ============================================
+   SEARCH INPUT RTL FIX
+   ============================================ */
+
+/* Search input with icon - البحث بالعنوان */
+.rtl .search-wrapper,
+.rtl .search-field,
+.rtl [class*="search"] input {
+  text-align: right !important;
+  padding-right: 1rem !important;
+  padding-left: 2.5rem !important;
+}
+
+.rtl .search-wrapper .search-icon,
+.rtl .search-field svg,
+.rtl [class*="search"] svg {
+  left: 0.75rem !important;
+  right: auto !important;
+  position: absolute;
+}
+
+/* ============================================
+   FRAPPE FORM CONTROLS RTL
+   ============================================ */
+
+.rtl .frappe-control {
+  text-align: right;
+}
+
+.rtl .frappe-control label,
+.rtl .frappe-control .label {
+  text-align: right;
+  display: block;
+}
+
+.rtl .frappe-control .help-text,
+.rtl .frappe-control .description {
+  text-align: right;
+}
+
+/* Link field with icon */
+.rtl .frappe-control[data-fieldtype="Link"] .link-field {
+  flex-direction: row-reverse;
+}
+
+.rtl .frappe-control[data-fieldtype="Link"] .link-btn {
+  left: 0.5rem;
+  right: auto;
+}
+
+/* ============================================
+   SIDEBAR COURSE INFO RTL (هذه الدورة لديها)
+   ============================================ */
+
+.rtl .course-sidebar,
+.rtl .course-info-sidebar {
+  text-align: right;
+}
+
+.rtl .course-sidebar .info-item,
+.rtl .course-info-sidebar > div {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
+}
+
+/* ============================================
+   BUTTON WITH ICON RTL (راسل المعلم)
+   ============================================ */
+
+.rtl .btn-with-icon,
+.rtl button svg + span,
+.rtl button span + svg,
+.rtl .btn svg {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.rtl .btn svg,
+.rtl button svg {
+  margin-left: 0.5rem !important;
+  margin-right: 0 !important;
+}
+
+/* Icon before text in RTL */
+.rtl .icon-before-text {
+  flex-direction: row-reverse;
+}
+
+/* ============================================
+   TABLE ALIGNMENT FIXES
+   ============================================ */
+
+.rtl table.dataTable,
+.rtl .frappe-list table,
+.rtl .report-table {
+  direction: rtl;
+}
+
+.rtl table thead th,
+.rtl table tbody td {
+  text-align: right !important;
+}
+
+/* First column (usually checkbox or ID) - align right in RTL */
+.rtl table thead th:first-child,
+.rtl table tbody td:first-child {
+  text-align: right !important;
+}
+
+/* Numeric columns - keep left aligned */
+.rtl table td.numeric,
+.rtl table td[data-type="number"],
+.rtl table td.text-right {
+  text-align: left !important;
+  direction: ltr !important;
+}
+
+/* ============================================
+   SETTINGS/FORM SECTION RTL (إعدادات)
+   ============================================ */
+
+.rtl .settings-section,
+.rtl .form-section,
+.rtl fieldset {
+  text-align: right;
+}
+
+.rtl .settings-section .section-title,
+.rtl .form-section h4,
+.rtl fieldset legend {
+  text-align: right;
+}
+
+/* Settings checkboxes row */
+.rtl .settings-row,
+.rtl .checkbox-row {
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* ============================================
+   FIX FOR SPECIFIC FRAPPE UI COMPONENTS
+   ============================================ */
+
+/* Frappe UI Button */
+.rtl .frappe-btn,
+.rtl .btn {
+  display: inline-flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Frappe UI Card */
+.rtl .frappe-card {
+  text-align: right;
+}
+
+/* Frappe UI List */
+.rtl .frappe-list .list-row {
+  flex-direction: row-reverse;
+}
+
+/* Frappe Control Help */
+.rtl .frappe-control .clearfix::after {
+  clear: both;
+}
+
+/* Required asterisk position */
+.rtl .reqd::after,
+.rtl .mandatory::after {
+  margin-right: 0.25rem;
+  margin-left: 0;
+}
+
+/* ============================================
+   TAILWIND RTL OVERRIDES (Vue Components)
+   ============================================ */
+
+/* --- ml-* classes should become mr-* in RTL --- */
+.rtl .ml-1 { margin-left: 0 !important; margin-right: 0.25rem !important; }
+.rtl .ml-2 { margin-left: 0 !important; margin-right: 0.5rem !important; }
+.rtl .ml-3 { margin-left: 0 !important; margin-right: 0.75rem !important; }
+.rtl .ml-4 { margin-left: 0 !important; margin-right: 1rem !important; }
+.rtl .ml-5 { margin-left: 0 !important; margin-right: 1.25rem !important; }
+.rtl .ml-6 { margin-left: 0 !important; margin-right: 1.5rem !important; }
+.rtl .ml-8 { margin-left: 0 !important; margin-right: 2rem !important; }
+.rtl .ml-10 { margin-left: 0 !important; margin-right: 2.5rem !important; }
+.rtl .ml-12 { margin-left: 0 !important; margin-right: 3rem !important; }
+.rtl .ml-auto { margin-left: 0 !important; margin-right: auto !important; }
+
+/* --- mr-* classes should become ml-* in RTL --- */
+.rtl .mr-1 { margin-right: 0 !important; margin-left: 0.25rem !important; }
+.rtl .mr-2 { margin-right: 0 !important; margin-left: 0.5rem !important; }
+.rtl .mr-3 { margin-right: 0 !important; margin-left: 0.75rem !important; }
+.rtl .mr-4 { margin-right: 0 !important; margin-left: 1rem !important; }
+.rtl .mr-5 { margin-right: 0 !important; margin-left: 1.25rem !important; }
+.rtl .mr-6 { margin-right: 0 !important; margin-left: 1.5rem !important; }
+.rtl .mr-8 { margin-right: 0 !important; margin-left: 2rem !important; }
+.rtl .mr-10 { margin-right: 0 !important; margin-left: 2.5rem !important; }
+.rtl .mr-12 { margin-right: 0 !important; margin-left: 3rem !important; }
+.rtl .mr-auto { margin-right: 0 !important; margin-left: auto !important; }
+
+/* --- pl-* classes should become pr-* in RTL --- */
+.rtl .pl-1 { padding-left: 0 !important; padding-right: 0.25rem !important; }
+.rtl .pl-2 { padding-left: 0 !important; padding-right: 0.5rem !important; }
+.rtl .pl-3 { padding-left: 0 !important; padding-right: 0.75rem !important; }
+.rtl .pl-4 { padding-left: 0 !important; padding-right: 1rem !important; }
+.rtl .pl-5 { padding-left: 0 !important; padding-right: 1.25rem !important; }
+.rtl .pl-6 { padding-left: 0 !important; padding-right: 1.5rem !important; }
+.rtl .pl-8 { padding-left: 0 !important; padding-right: 2rem !important; }
+.rtl .pl-10 { padding-left: 0 !important; padding-right: 2.5rem !important; }
+.rtl .pl-12 { padding-left: 0 !important; padding-right: 3rem !important; }
+
+/* --- pr-* classes should become pl-* in RTL --- */
+.rtl .pr-1 { padding-right: 0 !important; padding-left: 0.25rem !important; }
+.rtl .pr-2 { padding-right: 0 !important; padding-left: 0.5rem !important; }
+.rtl .pr-3 { padding-right: 0 !important; padding-left: 0.75rem !important; }
+.rtl .pr-4 { padding-right: 0 !important; padding-left: 1rem !important; }
+.rtl .pr-5 { padding-right: 0 !important; padding-left: 1.25rem !important; }
+.rtl .pr-6 { padding-right: 0 !important; padding-left: 1.5rem !important; }
+.rtl .pr-8 { padding-right: 0 !important; padding-left: 2rem !important; }
+.rtl .pr-10 { padding-right: 0 !important; padding-left: 2.5rem !important; }
+.rtl .pr-12 { padding-right: 0 !important; padding-left: 3rem !important; }
+
+/* --- left-* classes should become right-* in RTL --- */
+.rtl .left-0 { left: auto !important; right: 0 !important; }
+.rtl .left-1 { left: auto !important; right: 0.25rem !important; }
+.rtl .left-2 { left: auto !important; right: 0.5rem !important; }
+.rtl .left-3 { left: auto !important; right: 0.75rem !important; }
+.rtl .left-4 { left: auto !important; right: 1rem !important; }
+.rtl .left-5 { left: auto !important; right: 1.25rem !important; }
+.rtl .left-6 { left: auto !important; right: 1.5rem !important; }
+.rtl .left-8 { left: auto !important; right: 2rem !important; }
+
+/* --- right-* classes should become left-* in RTL --- */
+.rtl .right-0 { right: auto !important; left: 0 !important; }
+.rtl .right-1 { right: auto !important; left: 0.25rem !important; }
+.rtl .right-2 { right: auto !important; left: 0.5rem !important; }
+.rtl .right-3 { right: auto !important; left: 0.75rem !important; }
+.rtl .right-4 { right: auto !important; left: 1rem !important; }
+.rtl .right-5 { right: auto !important; left: 1.25rem !important; }
+.rtl .right-6 { right: auto !important; left: 1.5rem !important; }
+.rtl .right-8 { right: auto !important; left: 2rem !important; }
+
+/* --- text-left should become text-right in RTL --- */
+.rtl .text-left { text-align: right !important; }
+.rtl .text-right { text-align: left !important; }
+
+/* --- border-l-* should become border-r-* in RTL --- */
+.rtl .border-l { border-left: none !important; border-right-width: 1px !important; }
+.rtl .border-l-2 { border-left: none !important; border-right-width: 2px !important; }
+.rtl .border-l-4 { border-left: none !important; border-right-width: 4px !important; }
+
+/* --- border-r-* should become border-l-* in RTL --- */
+.rtl .border-r { border-right: none !important; border-left-width: 1px !important; }
+.rtl .border-r-2 { border-right: none !important; border-left-width: 2px !important; }
+.rtl .border-r-4 { border-right: none !important; border-left-width: 4px !important; }
+
+/* --- rounded corners RTL flip --- */
+.rtl .rounded-l { border-radius: 0 !important; border-top-right-radius: 0.25rem !important; border-bottom-right-radius: 0.25rem !important; }
+.rtl .rounded-l-md { border-radius: 0 !important; border-top-right-radius: 0.375rem !important; border-bottom-right-radius: 0.375rem !important; }
+.rtl .rounded-l-lg { border-radius: 0 !important; border-top-right-radius: 0.5rem !important; border-bottom-right-radius: 0.5rem !important; }
+
+.rtl .rounded-r { border-radius: 0 !important; border-top-left-radius: 0.25rem !important; border-bottom-left-radius: 0.25rem !important; }
+.rtl .rounded-r-md { border-radius: 0 !important; border-top-left-radius: 0.375rem !important; border-bottom-left-radius: 0.375rem !important; }
+.rtl .rounded-r-lg { border-radius: 0 !important; border-top-left-radius: 0.5rem !important; border-bottom-left-radius: 0.5rem !important; }
+
+/* --- space-x-* RTL fix (reverse child margins) --- */
+.rtl .space-x-1 > :not([hidden]) ~ :not([hidden]) { margin-left: 0 !important; margin-right: 0.25rem !important; }
+.rtl .space-x-2 > :not([hidden]) ~ :not([hidden]) { margin-left: 0 !important; margin-right: 0.5rem !important; }
+.rtl .space-x-3 > :not([hidden]) ~ :not([hidden]) { margin-left: 0 !important; margin-right: 0.75rem !important; }
+.rtl .space-x-4 > :not([hidden]) ~ :not([hidden]) { margin-left: 0 !important; margin-right: 1rem !important; }
+.rtl .space-x-5 > :not([hidden]) ~ :not([hidden]) { margin-left: 0 !important; margin-right: 1.25rem !important; }
+.rtl .space-x-6 > :not([hidden]) ~ :not([hidden]) { margin-left: 0 !important; margin-right: 1.5rem !important; }
+
+/* ============================================
+   COURSE INFO SIDEBAR RTL (هذه الدورة لديها)
+   ============================================ */
+
+/* Fix icon + text alignment in course info */
+.rtl .flex.items-center.text-ink-gray-9,
+.rtl .flex.items-center.text-ink-gray-7 {
+  flex-direction: row-reverse !important;
+}
+
+.rtl .flex.items-center.text-ink-gray-9 svg,
+.rtl .flex.items-center.text-ink-gray-7 svg {
+  margin-left: 0.5rem !important;
+  margin-right: 0 !important;
+}
+
+.rtl .flex.items-center.text-ink-gray-9 span,
+.rtl .flex.items-center.text-ink-gray-7 span {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* ============================================
+   FRAPPE-UI SPECIFIC COMPONENT FIXES
+   ============================================ */
+
+/* Frappe-UI FormControl / Select */
+.rtl [class*="FormControl"] select,
+.rtl .form-control {
+  text-align: right !important;
+  direction: rtl !important;
+  padding-right: 1rem !important;
+  padding-left: 2.5rem !important;
+}
+
+/* Frappe-UI Autocomplete */
+.rtl [class*="Autocomplete"] {
+  direction: rtl !important;
+}
+
+.rtl [class*="Autocomplete"] input {
+  text-align: right !important;
+}
+
+.rtl [class*="Autocomplete"] ul {
+  text-align: right !important;
+}
+
+/* Frappe-UI Link */
+.rtl [class*="Link"] input {
+  text-align: right !important;
+}
+
+/* Frappe-UI Popover */
+.rtl [class*="Popover"] {
+  text-align: right !important;
+}
+
+/* Frappe-UI Dialog */
+.rtl [class*="Dialog"] {
+  text-align: right !important;
+}
+
+.rtl [class*="Dialog"] header {
+  flex-direction: row-reverse !important;
+}
+
+/* ============================================
+   LUCIDE ICONS RTL (directional icons)
+   ============================================ */
+
+.rtl .lucide-chevron-left,
+.rtl .lucide-chevron-right,
+.rtl .lucide-arrow-left,
+.rtl .lucide-arrow-right,
+.rtl [class*="ChevronLeft"],
+.rtl [class*="ChevronRight"],
+.rtl [class*="ArrowLeft"],
+.rtl [class*="ArrowRight"] {
+  transform: scaleX(-1) !important;
+}
+
+/* ============================================
+   FILTER SECTION RTL FIX (جميع الفئات)
+   ============================================ */
+
+/* Course filter selects */
+.rtl .course-filters,
+.rtl .filters-section,
+.rtl [class*="filter"] {
+  direction: rtl !important;
+}
+
+.rtl .course-filters select,
+.rtl .filters-section select {
+  text-align: right !important;
+  padding-right: 1rem !important;
+  padding-left: 2.5rem !important;
+  background-position: left 0.75rem center !important;
+}
+
+/* Search input in filters */
+.rtl .course-filters input[type="text"],
+.rtl .course-filters input[type="search"],
+.rtl .search-input {
+  text-align: right !important;
+  direction: rtl !important;
+}
+
+/* ============================================
+   QUIZ/QUESTION LIST RTL
+   ============================================ */
+
+/* Question row layout */
+.rtl .question-row,
+.rtl [class*="question-list"] tr,
+.rtl .quiz-questions tr {
+  direction: rtl !important;
+}
+
+/* Keep question ID (QTS-xxx) LTR */
+.rtl .question-row td:first-child,
+.rtl [class*="question-list"] tr td:first-child {
+  direction: ltr !important;
+  text-align: left !important;
+}
+
+/* Checkbox in question row */
+.rtl .question-row input[type="checkbox"],
+.rtl [class*="question-list"] input[type="checkbox"] {
+  margin-left: 0.5rem !important;
+  margin-right: 0 !important;
+}
+
+/* ============================================
+   MEMBER/STUDENT LIST RTL
+   ============================================ */
+
+.rtl .member-list,
+.rtl .student-list,
+.rtl [class*="Members"],
+.rtl [class*="Students"] {
+  direction: rtl !important;
+}
+
+.rtl .member-row,
+.rtl .student-row {
+  flex-direction: row-reverse !important;
+}
+
+.rtl .member-avatar,
+.rtl .student-avatar {
+  margin-left: 0.75rem !important;
+  margin-right: 0 !important;
+}
+
+/* ============================================
+   SUBMISSION STATUS RTL (Pass badge)
+   ============================================ */
+
+.rtl .submission-status,
+.rtl .status-cell {
+  direction: rtl !important;
+}
+
+.rtl .pass-badge,
+.rtl .fail-badge,
+.rtl .status-badge {
+  direction: ltr !important;
+}
+
+/* ============================================
+   NUMBER INPUT SPINNER RTL FIX
+   ============================================ */
+
+/* Move number input spinner to left side in RTL */
+.rtl input[type="number"] {
+  direction: ltr !important;
+  text-align: right !important;
+}
+
+/* Webkit browsers - flip spinner position */
+.rtl input[type="number"]::-webkit-inner-spin-button,
+.rtl input[type="number"]::-webkit-outer-spin-button {
+  margin-left: 0 !important;
+  margin-right: auto !important;
+}
+
+/* Number input container */
+.rtl .number-input-wrapper,
+.rtl .frappe-control[data-fieldtype="Int"],
+.rtl .frappe-control[data-fieldtype="Float"],
+.rtl .frappe-control[data-fieldtype="Currency"] {
+  direction: rtl !important;
+}
+
+.rtl .frappe-control[data-fieldtype="Int"] input,
+.rtl .frappe-control[data-fieldtype="Float"] input,
+.rtl .frappe-control[data-fieldtype="Currency"] input {
+  direction: ltr !important;
+  text-align: right !important;
+}
+
+/* ============================================
+   COURSE CARD STATS FIX (icon + number + text)
+   ============================================ */
+
+/* Course card meta/stats row - properly order items */
+.rtl .course-card .flex.items-center,
+.rtl .frappe-card .flex.items-center {
+  flex-direction: row-reverse !important;
+}
+
+/* Individual stat items - keep icon-number-text in correct visual order */
+/* The items should appear as: دروس 7 📖 (text number icon from right to left) */
+.rtl .course-card .flex.items-center > span,
+.rtl .course-card .flex.items-center > div,
+.rtl .frappe-card .flex.items-center > span {
+  display: inline-flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 0.25rem !important;
+}
+
+/* Course sidebar stats - هذه الدورة لديها section */
+.rtl .space-y-4 .flex.items-center {
+  flex-direction: row !important;
+  justify-content: flex-end !important;
+}
+
+.rtl .space-y-4 .flex.items-center svg {
+  order: -1 !important;
+  margin-left: 0 !important;
+  margin-right: 0.5rem !important;
+}
+
+.rtl .space-y-4 .flex.items-center span {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* ============================================
+   COURSE CARD GRID STATS (0.0 ☆ | 1 👥 | 2 📖)
+   ============================================ */
+
+/* Stats row on course cards */
+.rtl .course-card-stats,
+.rtl [class*="course"] .stats-row,
+.rtl .card-meta-info {
+  display: flex !important;
+  flex-direction: row-reverse !important;
+  justify-content: flex-start !important;
+  gap: 1rem !important;
+}
+
+/* Each stat group (icon + number) */
+.rtl .stat-group,
+.rtl .meta-stat,
+.rtl .course-stat {
+  display: inline-flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 0.25rem !important;
+}
+
+/* Keep numbers LTR for readability */
+.rtl .stat-group span,
+.rtl .meta-stat span,
+.rtl .course-stat span {
+  direction: ltr !important;
+}
+
+/* ============================================
+   SPECIFIC FIX FOR LMS COURSE CARD ICONS
+   ============================================ */
+
+/* Fix the icon+text pairs in course cards */
+/* Target: 0 ☆ | 1 👥 | 2 📖 pattern */
+.rtl .text-ink-gray-7.flex.items-center {
+  display: inline-flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 0.25rem !important;
+}
+
+/* Ensure SVG icons stay with their numbers */
+.rtl .text-ink-gray-7.flex.items-center svg {
+  flex-shrink: 0 !important;
+}
+
+/* Course card bottom row with multiple stats */
+.rtl .course-card-footer,
+.rtl .card-footer-stats {
+  display: flex !important;
+  flex-direction: row-reverse !important;
+  align-items: center !important;
+  gap: 1rem !important;
+}
+
+/* ============================================
+   SELECT/DROPDOWN CHEVRON POSITION FIX
+   ============================================ */
+
+/* Move dropdown chevron to left side */
+.rtl select {
+  background-position: left 0.75rem center !important;
+  padding-left: 2.5rem !important;
+  padding-right: 1rem !important;
+}
+
+/* Frappe UI Select */
+.rtl .select-with-icon,
+.rtl .form-select {
+  background-position: left 0.75rem center !important;
+}
+
+/* Custom select wrapper chevron */
+.rtl .select-chevron,
+.rtl .select-arrow {
+  left: 0.75rem !important;
+  right: auto !important;
+}
+
+/* ============================================
+   CHECKBOX ALIGNMENT IMPROVEMENTS
+   ============================================ */
+
+/* Checkbox should appear on left side of label in RTL */
+.rtl label:has(input[type="checkbox"]),
+.rtl .checkbox-label {
+  display: flex !important;
+  flex-direction: row-reverse !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  justify-content: flex-end !important;
+}
+
+/* Inline checkbox groups */
+.rtl .checkbox-group,
+.rtl .inline-checkboxes {
+  display: flex !important;
+  flex-direction: row-reverse !important;
+  flex-wrap: wrap !important;
+  gap: 1rem !important;
+}
+
+/* ============================================
+   PROGRESS BAR PERCENTAGE TEXT
+   ============================================ */
+
+/* Keep percentage LTR (38% أكتمل) */
+.rtl .progress-text,
+.rtl .completion-text,
+.rtl [class*="progress"] span {
+  direction: ltr !important;
+  unicode-bidi: embed !important;
+}
+
+/* Progress bar fills from right in RTL */
+.rtl .progress-bar-fill,
+.rtl .progress-fill {
+  transform-origin: right !important;
+}
+
+/* ============================================
+   INSTRUCTOR/AUTHOR ROW FIX
+   ============================================ */
+
+/* Instructor row at bottom of course card */
+.rtl .instructor-row,
+.rtl .author-info,
+.rtl .card-author {
+  display: flex !important;
+  flex-direction: row-reverse !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 0.5rem !important;
+}
+
+/* Author avatar */
+.rtl .author-avatar,
+.rtl .instructor-avatar {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* ============================================
+   FORM LAYOUT GRID FIX (2 columns)
+   ============================================ */
+
+/* Two-column form layouts */
+.rtl .form-grid,
+.rtl .grid-cols-2,
+.rtl .two-column-form {
+  direction: rtl !important;
+}
+
+/* Each form column */
+.rtl .form-column,
+.rtl .form-grid > div {
+  text-align: right !important;
+}
+
+/* Label above input */
+.rtl .form-label,
+.rtl .control-label {
+  text-align: right !important;
+  display: block !important;
+}
+
+/* ============================================
+   BADGE/TAG POSITION FIX (متميز badge)
+   ============================================ */
+
+/* Featured/special badges on course cards */
+.rtl .course-badge,
+.rtl .featured-badge,
+.rtl .card-badge {
+  left: 1rem !important;
+  right: auto !important;
+}
+
+/* Badge inside card */
+.rtl .absolute.top-2.right-2,
+.rtl .absolute.top-3.right-3 {
+  right: auto !important;
+  left: 0.5rem !important;
+}
+
+/* ============================================
+   COURSE CARD SPECIFIC ICON+TEXT FIX
+   ============================================ */
+
+/* Target the exact structure from CourseCard.vue */
+/* <span class="flex items-center text-ink-gray-7"> <BookOpen class="mr-1"/> {{ lessons }} </span> */
+
+/* The span containing icon + number */
+.rtl span.flex.items-center.text-ink-gray-7 {
+  flex-direction: row-reverse !important;
+}
+
+/* The icon inside (has mr-1 which we flip to ml-1) */
+.rtl span.flex.items-center.text-ink-gray-7 svg {
+  margin-right: 0 !important;
+  margin-left: 0.25rem !important;
+}
+
+/* Course card stats row container */
+.rtl .flex.items-center.justify-between.mb-2 {
+  flex-direction: row-reverse !important;
+}
+
+/* ============================================
+   COURSE SIDEBAR OVERLAY SPECIFIC FIX
+   ============================================ */
+
+/* CourseCardOverlay.vue - هذه الدورة لديها section */
+/* <div class="flex items-center text-ink-gray-9"> <BookOpen/> <span class="ml-2">{{ lessons }}</span> </div> */
+
+.rtl .space-y-4 > .flex.items-center.text-ink-gray-9 {
+  flex-direction: row-reverse !important;
+  justify-content: flex-start !important;
+}
+
+.rtl .space-y-4 > .flex.items-center.text-ink-gray-9 > svg {
+  margin-right: 0.5rem !important;
+  margin-left: 0 !important;
+}
+
+.rtl .space-y-4 > .flex.items-center.text-ink-gray-9 > span {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* ============================================
+   SVG ICON MARGINS FIX (GENERAL)
+   ============================================ */
+
+/* Any SVG with mr-* class in RTL */
+.rtl svg.mr-1 { margin-right: 0 !important; margin-left: 0.25rem !important; }
+.rtl svg.mr-2 { margin-right: 0 !important; margin-left: 0.5rem !important; }
+.rtl svg.mr-3 { margin-right: 0 !important; margin-left: 0.75rem !important; }
+.rtl svg.mr-4 { margin-right: 0 !important; margin-left: 1rem !important; }
+
+/* Any SVG with ml-* class in RTL */
+.rtl svg.ml-1 { margin-left: 0 !important; margin-right: 0.25rem !important; }
+.rtl svg.ml-2 { margin-left: 0 !important; margin-right: 0.5rem !important; }
+.rtl svg.ml-3 { margin-left: 0 !important; margin-right: 0.75rem !important; }
+.rtl svg.ml-4 { margin-left: 0 !important; margin-right: 1rem !important; }
+
+/* ============================================
+   TOOLTIP WRAPPER FIX
+   ============================================ */
+
+/* Tooltip wrapper around stats */
+.rtl [data-tippy-root],
+.rtl .tooltip-wrapper {
+  direction: rtl !important;
+}
+
+/* ============================================
+   LUCIDE ICONS SPECIFIC CLASS FIX
+   ============================================ */
+
+/* Lucide icons have specific class patterns */
+.rtl .lucide.mr-1,
+.rtl [class*="lucide"].mr-1 {
+  margin-right: 0 !important;
+  margin-left: 0.25rem !important;
+}
+
+.rtl .lucide.mr-2,
+.rtl [class*="lucide"].mr-2 {
+  margin-right: 0 !important;
+  margin-left: 0.5rem !important;
+}
+
+.rtl .lucide.ml-1,
+.rtl [class*="lucide"].ml-1 {
+  margin-left: 0 !important;
+  margin-right: 0.25rem !important;
+}
+
+.rtl .lucide.ml-2,
+.rtl [class*="lucide"].ml-2 {
+  margin-left: 0 !important;
+  margin-right: 0.5rem !important;
+}
+
+/* ============================================
+   STROKE WIDTH CLASSES WITH MARGINS
+   ============================================ */
+
+/* Icons with stroke-1.5 class (common in LMS) */
+.rtl .stroke-1\.5.mr-1,
+.rtl [class*="stroke-1"].mr-1 {
+  margin-right: 0 !important;
+  margin-left: 0.25rem !important;
+}
+
+.rtl .stroke-1\.5.mr-2,
+.rtl [class*="stroke-1"].mr-2 {
+  margin-right: 0 !important;
+  margin-left: 0.5rem !important;
+}
+
+/* ============================================
+   STUDENT REVIEWS SECTION RTL FIX
+   ============================================ */
+
+/* Reviews section container - CourseReviews.vue */
+.rtl .mt-20.mb-10 {
+  text-align: right !important;
+}
+
+/* "Write a Review" button - flip float from right to left */
+.rtl .mt-20.mb-10 > .float-right,
+.rtl .float-right {
+  float: left !important;
+}
+
+/* "Student Reviews" title alignment */
+.rtl .mt-20.mb-10 > .flex.items-center.font-semibold.text-2xl {
+  justify-content: flex-end !important;
+}
+
+/* Review grid */
+.rtl .mt-20.mb-10 > .grid {
+  text-align: right !important;
+}
+
+/* Individual review item */
+.rtl .mt-20.mb-10 .flex.items-center {
+  flex-direction: row-reverse !important;
+}
+
+/* Review author info section (avatar + name + date) */
+.rtl .mt-20.mb-10 .mx-4 {
+  margin-left: 0 !important;
+  margin-right: 1rem !important;
+  text-align: right !important;
+}
+
+/* Star rating row in reviews */
+.rtl .mt-20.mb-10 .flex.mt-2 {
+  flex-direction: row-reverse !important;
+  justify-content: flex-end !important;
+}
+
+/* Star icons in reviews */
+.rtl .mt-20.mb-10 .flex.mt-2 svg {
+  margin-right: 0 !important;
+  margin-left: 0.5rem !important;
+}
+
+/* Review text content */
+.rtl .mt-20.mb-10 .mt-4.leading-5 {
+  text-align: right !important;
+}
+
+/* ============================================
+   GENERIC SECTION HEADER WITH BUTTON RTL
+   ============================================ */
+
+/* Section with title and button on opposite sides */
+/* .rtl .section-header,
+.rtl .flex.justify-between.items-center {
+  flex-direction: row-reverse !important;
+} */
+
+/* Title on the right, button on the left in RTL */
+.rtl .section-title {
+  text-align: right !important;
+}
+
+/* ============================================
+   COURSE OUTLINE SECTION RTL
+   ============================================ */
+
+/* Course outline items with chevrons */
+.rtl .outline-section,
+.rtl [class*="outline"] {
+  text-align: right !important;
+}
+
+.rtl .outline-item .flex,
+.rtl .chapter-header .flex {
+  flex-direction: row-reverse !important;
+}
+
+/* Chevron icons in outlines should flip */
+.rtl .outline-item svg,
+.rtl .chapter-header svg {
+  transform: scaleX(-1) !important;
+}
+
+/* Nested lesson items */
+.rtl .lesson-list,
+.rtl .nested-items {
+  padding-left: 0 !important;
+  padding-right: 1.5rem !important;
+}
+
+/* ============================================
+   USER/MEMBER INFO ROWS RTL
+   ============================================ */
+
+/* User avatar + name + info pattern */
+.rtl .user-info-row,
+.rtl .member-info,
+.rtl .avatar-with-name {
+  display: flex !important;
+  flex-direction: row-reverse !important;
+  align-items: center !important;
+  gap: 0.75rem !important;
+}
+
+/* User name after avatar */
+.rtl .user-info-row .user-name,
+.rtl .member-info .name {
+  text-align: right !important;
+}
+
+/* ============================================
+   CLEARFIX FOR FLOATED ELEMENTS RTL
+   ============================================ */
+
+/* Clear floats properly in RTL */
+.rtl .clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* ============================================
+   SPECIFIC FIX FOR REVIEWS HEADER ROW
+   ============================================ */
+
+/* Make the reviews section header a flex container */
+.rtl .mt-20.mb-10 {
+  display: block !important;
+}
+
+/* Position the button and title correctly */
+.rtl .mt-20.mb-10::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* The title should be block and right-aligned after the floated button */
+.rtl .mt-20.mb-10 > .flex.items-center.font-semibold.text-2xl.text-ink-gray-9 {
+  display: block !important;
+  text-align: right !important;
+  clear: none !important;
+}
+
+/* ============================================
+   DROPDOWN/POPOVER/AUTOCOMPLETE RTL FIXES
+   ============================================ */
+
+/* Popover and dropdown containers */
+.rtl [data-headlessui-state],
+.rtl [role="listbox"],
+.rtl [role="combobox"] {
+  text-align: right !important;
+}
+
+/* Search input container in dropdown - the X button should be on left */
+.rtl .relative.px-1\.5.pt-0\.5 {
+  direction: rtl !important;
+}
+
+/* The clear (X) button - move from right to left */
+.rtl .relative.px-1\.5.pt-0\.5 > button.absolute,
+.rtl .relative.px-1\.5 > button.absolute {
+  right: auto !important;
+  left: 0.375rem !important;
+}
+
+/* Search input - adjust padding for X button on left */
+.rtl .relative.px-1\.5 input[type="text"],
+.rtl .relative.px-1\.5 .form-input,
+.rtl .relative.px-1\.5.pt-0\.5 input {
+  padding-left: 2rem !important;
+  padding-right: 0.75rem !important;
+  text-align: right !important;
+  direction: rtl !important;
+}
+
+/* Combobox options list */
+.rtl [role="listbox"],
+.rtl .max-h-\[12rem\],
+.rtl .my-1.max-h-\[12rem\] {
+  direction: rtl !important;
+  text-align: right !important;
+}
+
+/* List items in dropdown */
+.rtl [role="listbox"] li,
+.rtl [role="option"],
+.rtl li.flex.items-center.rounded {
+  text-align: right !important;
+  flex-direction: row-reverse !important;
+}
+
+/* Question ID items (QTS-xxx) - keep LTR for the ID itself */
+.rtl li .flex.flex-col.space-y-1 > div:first-child {
+  direction: ltr !important;
+  text-align: left !important;
+}
+
+/* Description under the ID */
+.rtl li .flex.flex-col.space-y-1 > div.text-xs {
+  text-align: right !important;
+  direction: rtl !important;
+}
+
+/* Dropdown trigger button - chevron on left */
+.rtl button.flex.w-full.items-center.justify-between {
+  flex-direction: row-reverse !important;
+}
+
+/* Footer buttons in dropdown (Clear, etc.) */
+.rtl .border-t.p-1\.5 button,
+.rtl .border-t.p-1\.5.pb-0\.5 button {
+  flex-direction: row-reverse !important;
+  justify-content: flex-end !important;
+}
+
+/* Footer button icons */
+.rtl .border-t.p-1\.5 button svg {
+  margin-left: 0.5rem !important;
+  margin-right: 0 !important;
+}
+
+/* Popover body container */
+.rtl .mt-1.rounded-lg.bg-surface-white {
+  direction: rtl !important;
+}
+
+/* No results message */
+.rtl li.mt-1\.5.rounded-md.px-2\.5.py-1\.5 {
+  text-align: right !important;
+}
+
+/* ============================================
+   DIALOG/MODAL RTL FIXES (إعلان جديد)
+   ============================================ */
+
+/* Dialog container */
+.rtl [role="dialog"] {
+  text-align: right !important;
+}
+
+/* Dialog header - title should be right aligned */
+.rtl [role="dialog"] header {
+  flex-direction: row-reverse !important;
+  text-align: right !important;
+}
+
+/* Dialog title */
+.rtl [role="dialog"] h2,
+.rtl [role="dialog"] .dialog-title,
+.rtl [role="dialog"] [class*="title"] {
+  text-align: right !important;
+}
+
+/* Dialog close button - move to left */
+.rtl [role="dialog"] header button,
+.rtl [role="dialog"] .close-btn {
+  order: -1 !important;
+}
+
+/* Dialog body content */
+.rtl [role="dialog"] .space-y-4,
+.rtl [role="dialog"] .space-y-2,
+.rtl [role="dialog"] [class*="body"] {
+  text-align: right !important;
+}
+
+/* Form controls in dialog */
+.rtl [role="dialog"] label {
+  text-align: right !important;
+  display: block !important;
+}
+
+.rtl [role="dialog"] input[type="text"],
+.rtl [role="dialog"] input[type="email"],
+.rtl [role="dialog"] textarea {
+  text-align: right !important;
+  direction: rtl !important;
+}
+
+/* Dialog footer/actions - buttons alignment */
+.rtl [role="dialog"] footer,
+.rtl [role="dialog"] .dialog-actions,
+.rtl [role="dialog"] [class*="actions"] {
+  display: flex !important;
+  flex-direction: row-reverse !important;
+  justify-content: flex-start !important;
+  gap: 0.5rem !important;
+}
+
+/* Specific fix for the dialog actions container */
+.rtl .flex.items-center.justify-end.space-x-2 {
+  flex-direction: row-reverse !important;
+  justify-content: flex-start !important;
+}
+
+/* ============================================
+   FRAPPE-UI DIALOG SPECIFIC FIXES
+   ============================================ */
+
+/* Frappe-UI Dialog wrapper */
+.rtl .frappe-dialog,
+.rtl [class*="Dialog"] {
+  text-align: right !important;
+}
+
+/* Dialog title bar */
+.rtl .frappe-dialog header,
+.rtl [class*="Dialog"] header {
+  flex-direction: row-reverse !important;
+}
+
+/* Dialog content area */
+.rtl .frappe-dialog main,
+.rtl [class*="Dialog"] main,
+.rtl .frappe-dialog .dialog-content {
+  text-align: right !important;
+}
+
+/* ============================================
+   INPUT FIELD LABEL RTL (العنوان)
+   ============================================ */
+
+/* Form control wrapper */
+.rtl .space-y-1\.5,
+.rtl [class*="FormControl"] {
+  text-align: right !important;
+}
+
+/* Label above input */
+.rtl .space-y-1\.5 > label,
+.rtl [class*="FormControl"] label,
+.rtl label.block {
+  text-align: right !important;
+  display: block !important;
+}
+
+/* Required asterisk */
+.rtl label .text-ink-red-3,
+.rtl label .text-red-500 {
+  margin-right: 0.25rem !important;
+  margin-left: 0 !important;
+}
+
+/* Input placeholder alignment */
+.rtl input::placeholder,
+.rtl textarea::placeholder {
+  text-align: right !important;
+}
+
+/* ============================================
+   NOTIFICATION/ANNOUNCEMENT DIALOG FIX
+   ============================================ */
+
+/* The notification dialog shown in the screenshot */
+.rtl .fixed.inset-0 [role="dialog"] {
+  direction: rtl !important;
+}
+
+/* Dialog backdrop click area */
+.rtl .fixed.inset-0.bg-black {
+  direction: rtl !important;
+}
+
+/* ============================================
+   DIALOG BACKDROP STACKING (GLOBAL)
+   Ensures sticky headers (z-10) never appear above modal backdrops.
+   ============================================ */
+
+/* Frappe-UI dialog backdrop */
+.fixed.inset-0.bg-black {
+  z-index: 9998 !important;
+}
+
+/* Frappe-UI dialog panel */
+.fixed.inset-0 [role="dialog"] {
+  z-index: 9999 !important;
+}
+
+/* Dialog panel */
+.rtl .relative.bg-surface-white.rounded-xl,
+.rtl .relative.bg-white.rounded-xl {
+  direction: rtl !important;
+  text-align: right !important;
+}
+
+/* ============================================
+   QUIZ LIST TABLE RTL FIXES
+   ============================================ */
+
+/* Quiz list table */
+.rtl .quiz-list table,
+.rtl table[class*="quiz"] {
+  direction: rtl !important;
+}
+
+/* Table headers - align right except for numbers */
+.rtl table th {
+  text-align: right !important;
+}
+
+/* Keep numeric columns left-aligned */
+.rtl table td[class*="number"],
+.rtl table td[class*="marks"],
+.rtl table td[class*="percentage"] {
+  text-align: left !important;
+  direction: ltr !important;
+}
+
+/* ============================================
+   SIDEBAR MENU ITEMS RTL
+   ============================================ */
+
+/* Sidebar navigation items */
+.rtl nav a.flex.items-center,
+.rtl aside a.flex.items-center,
+.rtl .sidebar a.flex.items-center {
+  flex-direction: row-reverse !important;
+  justify-content: flex-end !important;
+}
+
+/* Sidebar icons */
+.rtl nav a.flex.items-center svg,
+.rtl aside a.flex.items-center svg {
+  margin-left: 0.5rem !important;
+  margin-right: 0 !important;
+}
+
+/* Active sidebar item highlight */
+.rtl nav a.bg-surface-selected,
+.rtl aside a.bg-surface-selected {
+  border-left: none !important;
+  border-right: 3px solid currentColor !important;
+}
+
+/* ============================================
+   HEADER TOOLBAR RTL (+ إختبار جديد button)
+   ============================================ */
+
+/* Header with title and action button */
+.rtl header.sticky.flex.items-center.justify-between {
+  flex-direction: row-reverse !important;
+}
+
+/* Action button with plus icon */
+.rtl button svg.w-4.h-4 + span,
+.rtl button span + svg.w-4.h-4 {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.25rem !important;
+}
+
+/* Button icon position */
+.rtl button svg.mr-1,
+.rtl button svg.mr-2 {
+  margin-right: 0 !important;
+  margin-left: 0.25rem !important;
+}
+
+/* ============================================
+   FRAPPE-UI BUTTON WITH PREFIX ICON
+   ============================================ */
+
+/* Button with #prefix slot */
+.rtl button [class*="prefix"],
+.rtl .btn [class*="prefix"] {
+  margin-right: 0 !important;
+  margin-left: 0.5rem !important;
+}
+
+/* Button with icon before text */
+.rtl button.flex.items-center.gap-1,
+.rtl button.flex.items-center.gap-2 {
+  flex-direction: row-reverse !important;
+}

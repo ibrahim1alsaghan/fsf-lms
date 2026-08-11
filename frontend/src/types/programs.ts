@@ -1,0 +1,51 @@
+export interface Program {
+	name: string
+	title: string
+	published: boolean
+	enforce_course_order: boolean
+	program_courses: ProgramCourse[]
+	program_members: ProgramMember[]
+	course_count: number
+	member_count: number
+}
+
+export interface ProgramCourse {
+	course: string
+	course_title: string
+	idx: number
+	name: string
+}
+
+export interface ProgramMember {
+	member: string
+	full_name: string
+	progress: number
+	idx: number
+	name: string
+}
+
+export interface Programs {
+	data: Program[]
+	reload: () => void
+	hasNextPage: boolean
+	next: () => void
+	setValue: {
+		submit: (
+			data: Program,
+			options?: { onSuccess?: () => void; onError?: (err: any) => void }
+		) => void
+	}
+	insert: {
+		submit: (
+			data: Program,
+			options?: { onSuccess?: () => void; onError?: (err: any) => void }
+		) => void
+	}
+	delete: {
+		submit: (
+			name: string,
+			options?: { onSuccess?: () => void; onError?: (err: any) => void }
+		) => void
+	}
+}
+
